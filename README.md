@@ -8,7 +8,6 @@ I made this in order understand the concepts of JavaScript.
 ## Table of contents
 - [Overview](#overview)
     - [Rules](#rules) ✌️
-    - [Screenshot](#screenshot) 📷
     - [Demo Game](#demonstration) 🎮
 
 - [My process](#my-process)
@@ -25,12 +24,19 @@ I made this in order understand the concepts of JavaScript.
 - If the next card you flip does not match, a pop up alert notifies you of ths and the cards flip back
 - The game continues until you match all the cards on the board
 
-### Screenshot
-
-  
 ### Demonstration  
+- Initial Look of the board 
+![original state of the board](images/original-state.jpg)
 
 
+- When the tiles are not matched
+![tiles are not matched](images/tiles-are-not-matched.jpg)
+
+- When tiles are matched
+![matched](images/tiles-matched.jpg)
+
+- Winning slide
+![winning slide](images/final-screen.jpg)
 ## My process
 ### Built with
 - HTML5
