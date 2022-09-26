@@ -58,10 +58,12 @@ cardArr.sort(() => 0.5 - Math.random());
 
 // # -> we are looking for an id.
 const gridDisplay = document.querySelector('#grid');
-const cardsChosen = [];
-const cardsChosenIds = [];
+const resultDisplay = document.querySelector('#result');
 
+let cardsChosen = [];
+let cardsChosenIds = [];
 
+const cardsWon = [];
 
 function createBoard() {
     for(let i = 0; i < cardArr.length; i++) {
@@ -77,11 +79,45 @@ createBoard();
 
 function checkMatch() {
     const cards = document.querySelectorAll('#grid img');
+    const optionOneId = cardsChosenIds[0];
+    const optionTwoId = cardsChosenIds[1];
+    
     console.log(cards);
     console.log('check for match');
+
+    if(optionOneId == optionTwoId) {
+        cards[optionOneId].setAttribute('src', 'images/blank.png');
+        cards[optionTwoId].setAttribute('src', 'images/blank.png');
+        alert('You clicked on the same image.');
+    }
+
     if(cardsChosen[0] === cardsChosen[1]) {
-        alert('You found a match');
-        cards[cardsChosenIds[0]].setAttribute('src', 'images/white.png');
+        alert('You found a match!!');
+
+        // background color to white for matched cards
+        cards[optionOneId].setAttribute('src', 'images/white.png');
+        cards[optionTwoId].setAttribute('src', 'images/white.png');
+        
+        // removing event listeners 
+        cards[optionOneId].removeEventListener('click', flipCard);
+        cards[optionTwoId].removeEventListener('click', flipCard);
+        
+        cardsWon.push(cardsChosen);
+    } else {
+        cards[optionOneId].setAttribute('src', 'images/blank.png');
+        cards[optionTwoId].setAttribute('src', 'images/blank.png');
+        alert('Sorry, try again :(');
+    }
+
+    resultDisplay.textContent = cardsWon.length
+
+    // Restarting the whole process again.
+    cardsChosen = []; 
+    cardsChosenIds = [];
+
+    // 12 cards -> 6 matches
+    if(cardsWon.length == (cardArr.length) / 2){
+        resultDisplay.textContent = 'Congratulations, you found them all :)';
     }
 }
 
