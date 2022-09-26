@@ -1,53 +1,53 @@
 const cardArr = [
     {
-        name: 'fries',
-        img: 'images/fries.png',
+      name: 'fries',
+      img: 'images/fries.png'
     },
     {
-        name: 'cheeseburger',
-        img: 'images/cheeseburger.png',
+      name: 'cheeseburger',
+      img: 'images/cheeseburger.png'
     },
     {
-        name: 'hotdog',
-        img: 'images/hotdog.png',
+      name: 'ice-cream',
+      img: 'images/ice-cream.png'
     },
     {
-        name: 'ice-cream',
-        img: 'images/ice-cream.png',
+      name: 'pizza',
+      img: 'images/pizza.png'
     },
     {
-        name: 'milkshake',
-        img: 'images/milkshake.png',
+      name: 'milkshake',
+      img: 'images/milkshake.png'
     },
     {
-        name: 'pizza',
-        img: 'images/pizza.png',
+      name: 'hotdog',
+      img: 'images/hotdog.png'
     },
     {
-        name: 'fries',
-        img: 'images/fries.png',
+      name: 'fries',
+      img: 'images/fries.png'
     },
     {
-        name: 'cheeseburger',
-        img: 'images/cheeseburger.png',
+      name: 'cheeseburger',
+      img: 'images/cheeseburger.png'
     },
     {
-        name: 'hotdog',
-        img: 'images/hotdog.png',
+      name: 'ice-cream',
+      img: 'images/ice-cream.png'
     },
     {
-        name: 'ice-cream',
-        img: 'images/ice-cream.png',
+      name: 'pizza',
+      img: 'images/pizza.png'
     },
     {
-        name: 'milkshake',
-        img: 'images/milkshake.png',
+      name: 'milkshake',
+      img: 'images/milkshake.png'
     },
     {
-        name: 'pizza',
-        img: 'images/pizza.png',
+      name: 'hotdog',
+      img: 'images/hotdog.png'
     }
-];
+  ]
 
 /*
     sort method works by comparing two values. compares the value and sorts through it.
@@ -56,4 +56,28 @@ const cardArr = [
 */ 
 cardArr.sort(() => 0.5 - Math.random());
 
-console.log(cardArr);
+// # -> we are looking for an id.
+const gridDisplay = document.querySelector('#grid');
+const cardsChosen = [];
+
+
+function createBoard() {
+    for(let i = 0; i < cardArr.length; i++) {
+        const card = document.createElement('img');
+        card.setAttribute('src', 'images/blank.png');
+        card.setAttribute('data-id', i);
+        card.addEventListener('click', flipCard);
+        gridDisplay.append(card);
+    }
+}
+
+createBoard();
+
+function flipCard() {
+    console.log(cardArr);
+    const cardId = this.getAttribute('data-id');
+    cardsChosen.push(cardArr[cardId].name);
+    console.log('clicked', cardId);
+    console.log(cardsChosen);
+    this.setAttribute('src', cardArr[cardId].img);
+}
