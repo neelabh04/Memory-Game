@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap');
+/* This will be applied to all the element inside the page first */
+
+body {
+    background-image: url(./images/pattern-background-desktop.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--pale-blue);
+    font-size: 16px;
+    font-family: "Red Hat Display", sans-serif;
+    font-size: 16px;
+}
+
 #grid {
     width: 400px;
     height: 300px;

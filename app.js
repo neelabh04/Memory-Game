@@ -68,9 +68,11 @@ const cardsWon = [];
 function createBoard() {
     for(let i = 0; i < cardArr.length; i++) {
         const card = document.createElement('img');
+        
         card.setAttribute('src', 'images/blank.png');
         card.setAttribute('data-id', i);
         card.addEventListener('click', flipCard);
+        
         gridDisplay.append(card);
     }
 }
@@ -124,6 +126,7 @@ function checkMatch() {
 function flipCard() {
     console.log(cardArr);
     const cardId = this.getAttribute('data-id');
+    
     cardsChosen.push(cardArr[cardId].name);
     cardsChosenIds.push(cardId);
 
