@@ -59,6 +59,8 @@ cardArr.sort(() => 0.5 - Math.random());
 // # -> we are looking for an id.
 const gridDisplay = document.querySelector('#grid');
 const cardsChosen = [];
+const cardsChosenIds = [];
+
 
 
 function createBoard() {
@@ -73,11 +75,25 @@ function createBoard() {
 
 createBoard();
 
+function checkMatch() {
+    const cards = document.querySelectorAll('#grid img');
+    console.log(cards);
+    console.log('check for match');
+    if(cardsChosen[0] === cardsChosen[1]) {
+        alert('You found a match');
+        cards[cardsChosenIds[0]].setAttribute('src', 'images/white.png');
+    }
+}
+
 function flipCard() {
     console.log(cardArr);
     const cardId = this.getAttribute('data-id');
     cardsChosen.push(cardArr[cardId].name);
-    console.log('clicked', cardId);
-    console.log(cardsChosen);
+    cardsChosenIds.push(cardId);
+
     this.setAttribute('src', cardArr[cardId].img);
+
+    if(cardsChosen.length == 2) {
+        setTimeout(checkMatch, 500);
+    }
 }
